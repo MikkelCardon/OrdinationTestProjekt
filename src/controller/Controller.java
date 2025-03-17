@@ -85,6 +85,7 @@ public class Controller {
 	 */
 	public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
 		return laegemiddel.anbefaletDosisPrDoegn(patient.getVaegt());
+		//TEST
 	}
 
 	/**
