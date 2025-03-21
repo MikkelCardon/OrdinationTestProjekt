@@ -19,8 +19,6 @@ public abstract class Ordination {
         this.laegemiddel = laegemiddel;
     }
 
-    // TODO Link til Laegemiddel
-    // TODO constructor
 
     public LocalDate getStartDato() {
         return startDato;

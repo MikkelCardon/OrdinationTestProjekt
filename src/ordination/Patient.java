@@ -8,12 +8,15 @@ public class Patient {
     private double vaegt;
 
     ArrayList<Ordination> ordinationArrayList = new ArrayList<>();
-    // TODO: Link til Ordination
 
     public Patient(String cprnr, String navn, double vaegt) {
         this.cprnr = cprnr;
         this.navn = navn;
         this.vaegt = vaegt;
+
+        if (vaegt <= 0){
+            throw new RuntimeException("Vægt skal være over 0 kg");
+        }
     }
 
     public String getCprnr() {
@@ -46,7 +49,6 @@ public class Patient {
         return ordinationArrayList;
     }
 
-    //TODO: Metoder til at vedligeholde link til Ordination
 
     @Override
     public String toString(){
