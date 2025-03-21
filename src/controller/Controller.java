@@ -4,11 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-import ordination.DagligFast;
-import ordination.DagligSkaev;
-import ordination.Laegemiddel;
-import ordination.PN;
-import ordination.Patient;
+import ordination.*;
 import storage.Storage;
 
 public class Controller {
@@ -76,6 +72,7 @@ public class Controller {
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
 		// TODO
+		ordination.givDosis(dato);
 	}
 
 	/**
@@ -85,18 +82,26 @@ public class Controller {
 	 */
 	public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
 		return laegemiddel.anbefaletDosisPrDoegn(patient.getVaegt());
-		//TEST
 	}
 
 	/**
 	 * For et givent vægtinterval og et givent lægemiddel, hentes antallet af
 	 * ordinationer.
 	 */
-	// FIXME: HVAD SKAL MAN?
 	public int antalOrdinationerPrVaegtPrLaegemiddel(double vaegtStart,
 													 double vaegtSlut, Laegemiddel laegemiddel) {
-		// TODO
-		return 0;
+		int antal = 0;
+		for (Patient patient : getAllPatienter()) {
+			double vægt = patient.getVaegt();
+			if (vægt >= vaegtStart && vægt <= vaegtSlut ){
+				for (Ordination ordination : patient.getOrdinationer()) {
+					if (ordination.getLaegemiddel() == laegemiddel){
+						antal++;
+					}
+				}
+			}
+		}
+		return antal;
 	}
 
 	public List<Patient> getAllPatienter() {

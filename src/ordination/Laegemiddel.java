@@ -24,7 +24,7 @@ public class Laegemiddel {
         return navn;
     }
 
-    //ToDo: ENHED pr. kilo. Der er derfor ganget op med vægt
+
     public double anbefaletDosisPrDoegn(double vaegt) {
         if (vaegt < 25) return enhedPrKgPrDoegnLet*vaegt;
         else if (vaegt > 120) return enhedPrKgPrDoegnTung*vaegt;
